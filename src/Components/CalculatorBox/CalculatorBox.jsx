@@ -6,9 +6,14 @@ import "./CalculatorBox.css";
 import SelectableColor from "./SelectableColor.jsx";
 
 const DEFAULT_BAND_COLORS = [
-  POSITIONS[3][1][0],
-  POSITIONS[3][1][1],
-  POSITIONS[3][1][2],
+  // POSITIONS[3][1][0],
+  // POSITIONS[3][1][1],
+  // POSITIONS[3][1][2],
+  POSITIONS[5][0][1],
+  POSITIONS[5][1][2],
+  POSITIONS[5][2][3],
+  POSITIONS[5][3][0],
+  POSITIONS[5][4][1],
 ];
 
 const CalculatorBox = () => {
@@ -17,16 +22,32 @@ const CalculatorBox = () => {
   const [selectedBand, setSelectedBand] = useState(null);
   const [selectableColors, setSelectableColors] = useState([]);
 
+  // Método para validar que los valores elegidos previamente estén en una posición válida acorde al nuevo número de bandas.
+  /*Ejemplos: 
+  - Con 3 bandas, la 3° podía ser dorada/plata pero con 5 bandas no.
+  - Con 5 bandas, la 4° podía ser negra pero con 4 no.
+  */
+  const validateBandPositions = (bands, newBandsCount) => {
+    return bands.map((band, index) => {
+      return POSITIONS[newBandsCount][index].includes(band)
+        ? band
+        : POSITIONS[newBandsCount][index][0];
+    });
+  };
+
   const handleBandCountSlider = (count) => {
     setSelectedBand(null);
     setSelectableColors([]);
     //Si el nuevo numero de bandas es menor que las bandas actuales eliminamos el ultimo elemento, y si es mayor se agrega un nuevo elemento usando las opciones disponibles para el nuevo tamaño.
     setBandColors((prev) => {
       if (count > prev.length) {
-        return [...prev, POSITIONS[count].at(-1)[0]];
+        return validateBandPositions(
+          [...prev, POSITIONS[count].at(-1)[0]],
+          count
+        );
       }
       if (count < prev.length) {
-        return prev.slice(0, -1);
+        return validateBandPositions(prev.slice(0, -1), count);
       }
       return prev;
     });
