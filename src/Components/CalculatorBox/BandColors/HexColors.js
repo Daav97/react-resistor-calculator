@@ -7,6 +7,6 @@ export const GREEN = "#09ff00";
 export const BLUE = "#0088ff";
 export const VIOLET = "#d400ff";
 export const GREY = "#9e9e9e";
-export const WHITE = "#edebed";
+export const WHITE = "#FFFFFF";
 export const GOLD = "#c4a000";
 export const SILVER = "#c9c9c9";

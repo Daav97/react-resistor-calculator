@@ -154,7 +154,7 @@ const Resistor = ({
             y={bandsY + bandHeight / 2 + bandTextSize / 3}
             fontSize={bandTextSize}
             textAnchor="middle"
-            fill="#ffffff"
+            fill="#d4d5d6"
             style={{ userSelect: "none" }}
           >
             {index + 1}
