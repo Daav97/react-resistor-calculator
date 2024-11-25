@@ -1,3 +1,5 @@
+import "./Resistor.css";
+
 const Resistor = ({
   bandsColors,
   containerWidth = 700,
@@ -48,32 +50,13 @@ const Resistor = ({
   const bandsY = resistorBodyY + strokeWidth / 2;
   const bandTextSize = bandWidth;
 
-  //Función para determinar el estilo de la banda seleccionada
-  const getBandStyle = (index) => {
-    if (index === selectedBand) {
-      return {
-        stroke: "#12d7ff",
-        strokeWidth: 0.1,
-        filter: "drop-shadow(0px 0px 6px #12d7ff)",
-      };
-    }
-    return {};
-  };
-
   return (
     <svg
-      width={containerWidth}
+      width={containerWidth} //TODO: Quitar esto y manejar en .css
       height={containerHeight}
       viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`}
       xmlns="http://www.w3.org/2000/svg"
-      style={{
-        border: "1px solid #ccc",
-        boxSizing: "border-box",
-        backgroundColor: "#e6e6e6",
-        borderRadius: "7px",
-        maxWidth: 300,
-        width: 300,
-      }}
+      className="svgContainer"
     >
       <defs>
         <linearGradient
@@ -137,25 +120,33 @@ const Resistor = ({
           onClick={() => {
             onBandClick(index);
           }}
-          style={{ cursor: "pointer" }}
+          className={`band ${index === selectedBand && "selectedBand"}`}
         >
           {/* Banda de color */}
           <rect
-            x={bandsStartX + index * (bandWidth + bandSpacing)}
             y={bandsY}
             width={bandWidth}
             height={bandHeight}
             fill={color}
-            {...getBandStyle(index)}
+            style={{
+              transform: `translateX(${
+                bandsStartX + index * (bandWidth + bandSpacing)
+              }px)`,
+              transition: "transform 0.3s ease-in-out",
+            }}
           />
           {/* Número de la banda */}
           <text
-            x={bandsStartX + index * (bandWidth + bandSpacing) + bandWidth / 2}
             y={bandsY + bandHeight / 2 + bandTextSize / 3}
             fontSize={bandTextSize}
             textAnchor="middle"
             fill="#d4d5d6"
-            style={{ userSelect: "none" }}
+            style={{
+              transform: `translateX(${
+                bandsStartX + index * (bandWidth + bandSpacing) + bandWidth / 2
+              }px)`,
+              transition: "transform 0.3s ease-in-out",
+            }}
           >
             {index + 1}
           </text>

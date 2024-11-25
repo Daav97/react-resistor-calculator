@@ -94,9 +94,7 @@ const CalculatorBox = () => {
       <p>
         Selecciona{" "}
         {selectedBand != null ? (
-          <>
-            el color de la <b>{NUMEROS_ORDINALES[selectedBand]}</b> banda:
-          </>
+          <>el color de la {NUMEROS_ORDINALES[selectedBand]} banda:</>
         ) : (
           "una banda para elegir su color"
         )}
