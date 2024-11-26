@@ -1,4 +1,4 @@
-import { AVAIBLE_BAND_COLORS_POSITIONS } from "./BandColors/AvaibleBandColorsPositions.js";
+import { AVAILABLE_BAND_COLORS_POSITIONS } from "./BandColors/AvailableBandColorsPositions.js";
 
 export const calculateResistorValues = (bands) => {
   const values = {};
@@ -73,8 +73,8 @@ export const convertToShortScale = (number) => {
   */
 export const validateBandPositions = (bands, newBandsCount) => {
   return bands.map((band, index) => {
-    return AVAIBLE_BAND_COLORS_POSITIONS[newBandsCount][index].includes(band)
+    return AVAILABLE_BAND_COLORS_POSITIONS[newBandsCount][index].includes(band)
       ? band
-      : AVAIBLE_BAND_COLORS_POSITIONS[newBandsCount][index][0];
+      : AVAILABLE_BAND_COLORS_POSITIONS[newBandsCount][index][0];
   });
 };

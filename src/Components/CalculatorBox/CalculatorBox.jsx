@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Resistor from "./Resistor/Resistor.jsx";
-import { AVAIBLE_BAND_COLORS_POSITIONS as POSITIONS } from "./BandColors/AvaibleBandColorsPositions.js";
+import { AVAILABLE_BAND_COLORS_POSITIONS as POSITIONS } from "./BandColors/AvailableBandColorsPositions.js";
 import { NUMEROS_ORDINALES } from "../../data/NumerosOrdinales.js";
 import "./CalculatorBox.css";
 import SelectableColor from "./SelectableColor/SelectableColor.jsx";
