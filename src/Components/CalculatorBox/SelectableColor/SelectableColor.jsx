@@ -1,4 +1,4 @@
-const SelectableColor = ({ bandColor, onSelectableColorClick }) => {
+const SelectableColor = ({ bandColor, onSelectableColorClick, isSelected }) => {
   const styles = {
     backgroundColor: bandColor.colorHexCode,
     fontSize: "0.7rem",
@@ -6,13 +6,15 @@ const SelectableColor = ({ bandColor, onSelectableColorClick }) => {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    userSelect: "none",
-    cursor: "pointer",
     color: "#49494a",
   };
 
   return (
-    <div style={styles} onClick={onSelectableColorClick}>
+    <div
+      style={styles}
+      onClick={onSelectableColorClick}
+      className={`selectableObject ${isSelected && "selectedObject"}`}
+    >
       {bandColor.name}
     </div>
   );

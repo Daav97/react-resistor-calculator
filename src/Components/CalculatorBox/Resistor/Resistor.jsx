@@ -120,7 +120,9 @@ const Resistor = ({
           onClick={() => {
             onBandClick(index);
           }}
-          className={`band ${index === selectedBand && "selectedBand"}`}
+          className={`selectableObject ${
+            index === selectedBand && "selectedObject"
+          }`}
         >
           {/* Banda de color */}
           <rect

@@ -21,6 +21,7 @@ const CalculatorBox = () => {
   const [size, setSize] = useState(500);
   const [bandColors, setBandColors] = useState([...DEFAULT_BAND_COLORS]);
   const [selectedBand, setSelectedBand] = useState(null);
+  const [selectedColor, setSelectedColor] = useState(null);
   const [selectableColors, setSelectableColors] = useState([]);
   const [result, setResult] = useState(null);
 
@@ -28,10 +29,15 @@ const CalculatorBox = () => {
     setResult(calculateResistorValues(bandColors));
   }, [bandColors]);
 
+  useEffect(() => {
+    setSelectedColor(bandColors[selectedBand]);
+  }, [selectedBand]);
+
   const clearValues = () => {
     setSelectedBand(null);
     setSelectableColors([]);
     setResult(null);
+    setSelectedColor(null);
   };
 
   const handleBandCountSlider = (count) => {
@@ -52,6 +58,7 @@ const CalculatorBox = () => {
   };
 
   const handleSelectableColorClick = (selectedColor) => {
+    setSelectedColor(selectedColor);
     setBandColors((prev) => [
       ...prev.slice(0, selectedBand),
       selectedColor,
@@ -99,13 +106,17 @@ const CalculatorBox = () => {
         )}
       </p>
       <div className="selectableColors">
-        {selectableColors.map((sc, idx) => (
-          <SelectableColor
-            key={idx}
-            bandColor={sc}
-            onSelectableColorClick={() => handleSelectableColorClick(sc)}
-          />
-        ))}
+        {selectableColors.map((sc, idx) => {
+          // debugger;
+          return (
+            <SelectableColor
+              key={idx}
+              bandColor={sc}
+              onSelectableColorClick={() => handleSelectableColorClick(sc)}
+              isSelected={sc === selectedColor}
+            />
+          );
+        })}
       </div>
       <p>
         Valor de la resistencia:{" "}
