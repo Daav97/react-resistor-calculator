@@ -1,19 +1,20 @@
-import { useState } from "react";
-import Resistor from "./Resistor.jsx";
+import { useEffect, useState } from "react";
+import Resistor from "./Resistor/Resistor.jsx";
 import { AVAIBLE_BAND_COLORS_POSITIONS as POSITIONS } from "./BandColors/AvaibleBandColorsPositions.js";
-import { NUMEROS_ORDINALES } from "./NumerosOrdinales.js";
+import { NUMEROS_ORDINALES } from "../../data/NumerosOrdinales.js";
 import "./CalculatorBox.css";
-import SelectableColor from "./SelectableColor.jsx";
+import SelectableColor from "./SelectableColor/SelectableColor.jsx";
+import {
+  calculateResistorValues,
+  convertToShortScale,
+  validateBandPositions,
+} from "./CalculatorBoxLogic.js";
 
 const DEFAULT_BAND_COLORS = [
-  // POSITIONS[3][1][0],
-  // POSITIONS[3][1][1],
-  // POSITIONS[3][1][2],
-  POSITIONS[5][0][1],
-  POSITIONS[5][1][2],
-  POSITIONS[5][2][3],
-  POSITIONS[5][3][0],
-  POSITIONS[5][4][1],
+  POSITIONS[4][0][1],
+  POSITIONS[4][1][0],
+  POSITIONS[4][2][2],
+  POSITIONS[4][3][0],
 ];
 
 const CalculatorBox = () => {
@@ -21,23 +22,20 @@ const CalculatorBox = () => {
   const [bandColors, setBandColors] = useState([...DEFAULT_BAND_COLORS]);
   const [selectedBand, setSelectedBand] = useState(null);
   const [selectableColors, setSelectableColors] = useState([]);
+  const [result, setResult] = useState(null);
 
-  // Método para validar que los valores elegidos previamente estén en una posición válida acorde al nuevo número de bandas.
-  /*Ejemplos: 
-  - Con 3 bandas, la 3° podía ser dorada/plata pero con 5 bandas no.
-  - Con 5 bandas, la 4° podía ser negra pero con 4 no.
-  */
-  const validateBandPositions = (bands, newBandsCount) => {
-    return bands.map((band, index) => {
-      return POSITIONS[newBandsCount][index].includes(band)
-        ? band
-        : POSITIONS[newBandsCount][index][0];
-    });
+  useEffect(() => {
+    setResult(calculateResistorValues(bandColors));
+  }, [bandColors]);
+
+  const clearValues = () => {
+    setSelectedBand(null);
+    setSelectableColors([]);
+    setResult(null);
   };
 
   const handleBandCountSlider = (count) => {
-    setSelectedBand(null);
-    setSelectableColors([]);
+    clearValues();
     //Si el nuevo numero de bandas es menor que las bandas actuales eliminamos el ultimo elemento, y si es mayor se agrega un nuevo elemento usando las opciones disponibles para el nuevo tamaño.
     setBandColors((prev) => {
       if (count > prev.length) {
@@ -52,6 +50,7 @@ const CalculatorBox = () => {
       return prev;
     });
   };
+
   const handleSelectableColorClick = (selectedColor) => {
     setBandColors((prev) => [
       ...prev.slice(0, selectedBand),
@@ -108,7 +107,11 @@ const CalculatorBox = () => {
           />
         ))}
       </div>
-      <p>Valor de la resistencia: </p>
+      <p>
+        Valor de la resistencia:{" "}
+        {result?.total && `${convertToShortScale(result.total)}Ω `}
+        {result?.tolerance && `±${result.tolerance?.tolerance}%`}
+      </p>
     </div>
   );
 };

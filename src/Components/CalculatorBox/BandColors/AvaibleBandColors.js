@@ -12,7 +12,7 @@ import {
   VIOLET,
   WHITE,
   YELLOW,
-} from "./HexColors.js";
+} from "../../../data/HexColors.js";
 
 export const BLACK_BAND = new BandColor("BLACK", BLACK, 0, 1);
 export const BROWN_BAND = new BandColor("BROWN", BROWN, 1, 10, 1, 100);
