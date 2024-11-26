@@ -134,7 +134,7 @@ const Resistor = ({
               transform: `translateX(${
                 bandsStartX + index * (bandWidth + bandSpacing)
               }px)`,
-              transition: "transform 0.3s ease-in-out, fill 0.2s ease-in-out",
+              transition: "transform 0.3s ease-in-out, fill 0.15s ease-in-out",
             }}
           />
           {/* Número de la banda */}
