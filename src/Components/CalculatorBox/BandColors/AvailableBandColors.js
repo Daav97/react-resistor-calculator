@@ -14,7 +14,7 @@ import {
   YELLOW,
 } from "../../../data/HexColors.js";
 
-export const BLACK_BAND = new BandColor("BLACK", BLACK, 0, 1);
+export const BLACK_BAND = new BandColor("BLACK", BLACK, 0, 1, null, 250);
 export const BROWN_BAND = new BandColor("BROWN", BROWN, 1, 10, 1, 100);
 export const RED_BAND = new BandColor("RED", RED, 2, 100, 2, 50);
 export const ORANGE_BAND = new BandColor("ORANGE", ORANGE, 3, 1000, 3, 15);

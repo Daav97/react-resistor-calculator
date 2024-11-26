@@ -107,7 +107,6 @@ const CalculatorBox = () => {
       </p>
       <div className="selectableColors">
         {selectableColors.map((sc, idx) => {
-          // debugger;
           return (
             <SelectableColor
               key={idx}
@@ -121,7 +120,8 @@ const CalculatorBox = () => {
       <p>
         Valor de la resistencia:{" "}
         {result?.total && `${convertToShortScale(result.total)}Ω `}
-        {result?.tolerance && `±${result.tolerance?.tolerance}%`}
+        {result?.tolerance && `±${result.tolerance?.tolerance}% `}
+        {result?.temperature && `${result.temperature.temperature} ppm`}
       </p>
     </div>
   );

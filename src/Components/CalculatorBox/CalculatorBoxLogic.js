@@ -22,7 +22,7 @@ export const calculateResistorValues = (bands) => {
       values.digits = [bands[0], bands[1], bands[2]];
       values.multiplier = bands[3];
       values.tolerance = bands[4];
-      values.temp = bands[5];
+      values.temperature = bands[5];
       break;
     default:
       return;
