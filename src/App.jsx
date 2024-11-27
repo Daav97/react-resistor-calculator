@@ -17,7 +17,14 @@ function App() {
   return (
     <div className="mainContainer">
       <h1 className="title">CALCULADORA DE RESISTENCIAS</h1>
-      <div className="calculatorsArea">
+      <div
+        className="calculatorsArea"
+        style={
+          calculators.length === 1
+            ? { flexDirection: "column" }
+            : { flexDirection: "row" }
+        }
+      >
         {calculators.map((calc, idx) => (
           <CalculatorBox
             key={calc.id}
@@ -25,7 +32,14 @@ function App() {
             onCloseClick={() => handleCloseCalculatorBox(calc.id)}
           />
         ))}
-        <div className="buttonSpace">
+        <div
+          className="buttonSpace"
+          style={
+            calculators.length === 1 || calculators.length % 3 === 0
+              ? { alignItems: "start" }
+              : { alignItems: "center" }
+          }
+        >
           <button className="addButton" onClick={addCalculatorBox}>
             +
           </button>
