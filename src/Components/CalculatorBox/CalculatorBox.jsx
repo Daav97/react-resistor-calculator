@@ -18,7 +18,6 @@ const DEFAULT_BAND_COLORS = [
 ];
 
 const CalculatorBox = () => {
-  const [size, setSize] = useState(500);
   const [bandColors, setBandColors] = useState([...DEFAULT_BAND_COLORS]);
   const [selectedBand, setSelectedBand] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null);
@@ -68,16 +67,6 @@ const CalculatorBox = () => {
 
   return (
     <div className="calculatorBoxBody">
-      {size}
-      <input
-        type="range"
-        min="1"
-        max="1000"
-        value={size}
-        className="slider"
-        id="myRange"
-        onChange={(e) => setSize(e.target.value)}
-      />
       Cantidad de bandas: {bandColors.length}
       <input
         type="range"
@@ -89,7 +78,6 @@ const CalculatorBox = () => {
         onChange={(e) => handleBandCountSlider(e.target.value)}
       />
       <Resistor
-        containerWidth={size}
         onBandClick={(idx) => {
           setSelectedBand(idx);
           setSelectableColors(POSITIONS[bandColors.length][idx]);
@@ -102,7 +90,7 @@ const CalculatorBox = () => {
         {selectedBand != null ? (
           <>el color de la {NUMEROS_ORDINALES[selectedBand]} banda:</>
         ) : (
-          "una banda para elegir su color"
+          "alguna banda para elegir su color"
         )}
       </p>
       <div className="selectableColors">
@@ -117,12 +105,12 @@ const CalculatorBox = () => {
           );
         })}
       </div>
-      <p>
-        Valor de la resistencia:{" "}
+      <p>Valor de la resistencia:</p>
+      <div className="resultDisplay">
         {result?.total && `${convertToShortScale(result.total)}Ω `}
         {result?.tolerance && `±${result.tolerance?.tolerance}% `}
         {result?.temperature && `${result.temperature.temperature} ppm`}
-      </p>
+      </div>
     </div>
   );
 };

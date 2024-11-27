@@ -2,7 +2,7 @@ import "./Resistor.css";
 
 const Resistor = ({
   bandsColors,
-  containerWidth = 700,
+  // containerWidth = 500,
   drawParams,
   onBandClick,
   selectedBand,
@@ -17,11 +17,11 @@ const Resistor = ({
     strokeColor,
   } = {
     ...{
-      viewBoxWidth: 300,
+      viewBoxWidth: 458,
       viewBoxHeight: 100,
       strokeWidth: 0.7,
-      resistorBodyWidth: 225,
-      resistorBodyHeight: 50,
+      resistorBodyWidth: 300,
+      resistorBodyHeight: 65,
       strokeColor: "#858585",
     },
     ...drawParams,
@@ -29,7 +29,7 @@ const Resistor = ({
 
   const bandCount = bandsColors.length;
 
-  const containerHeight = containerWidth / 3;
+  // const containerHeight = containerWidth / 3;
 
   const resistorBodyX = viewBoxWidth / 2 - resistorBodyWidth / 2;
   const resistorBodyY = viewBoxHeight / 2 - resistorBodyHeight / 2;
@@ -52,8 +52,8 @@ const Resistor = ({
 
   return (
     <svg
-      width={containerWidth} //TODO: Quitar esto y manejar en .css
-      height={containerHeight}
+      // width={"100%"} //TODO: Quitar esto y manejar en .css
+      // height={containerHeight}
       viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`}
       xmlns="http://www.w3.org/2000/svg"
       className="svgContainer"
@@ -89,8 +89,8 @@ const Resistor = ({
         fill="url(#bodyShadowGradient)"
         stroke={strokeColor}
         strokeWidth={strokeWidth}
-        rx="20"
-        ry="20"
+        rx="25"
+        ry="25"
       />
 
       {/* Cables de la resistencia */}

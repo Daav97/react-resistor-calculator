@@ -1,4 +1,15 @@
+:root {
+  --main-light-bg: rgb(227, 230, 229);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
 body {
-  background-color: #ecf4ff;
-  font-family: "Roboto", sans-serif; /* Para Google Fonts */
+  /* font-family: system-ui; */
+  font-family: "Roboto", sans-serif;
 }
