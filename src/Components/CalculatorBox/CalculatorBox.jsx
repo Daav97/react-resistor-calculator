@@ -17,7 +17,7 @@ const DEFAULT_BAND_COLORS = [
   POSITIONS[4][3][0],
 ];
 
-const CalculatorBox = () => {
+const CalculatorBox = ({ num, onCloseClick }) => {
   const [bandColors, setBandColors] = useState([...DEFAULT_BAND_COLORS]);
   const [selectedBand, setSelectedBand] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null);
@@ -67,6 +67,12 @@ const CalculatorBox = () => {
 
   return (
     <div className="calculatorBoxBody">
+      <div className="header">
+        <p className="num">#{num}</p>
+        <button className="closeButton" onClick={onCloseClick}>
+          X
+        </button>
+      </div>
       Cantidad de bandas: {bandColors.length}
       <input
         type="range"

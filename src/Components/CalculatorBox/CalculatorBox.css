@@ -49,3 +49,38 @@
   align-self: center;
   font-weight: 600;
 }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.num {
+  font-weight: bold;
+  font-size: small;
+}
+
+.closeButton {
+  border: none;
+  color: rgb(243, 243, 243);
+  font-size: 14px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  background-color: #4b4a4a;
+  font-weight: bold;
+}
+
+.closeButton:hover {
+  background-color: #fd4444;
+  transform: scale(1.1);
+}
+
+.closeButton:active {
+  transform: scale(0.9);
+}
