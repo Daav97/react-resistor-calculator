@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import Resistor from "./Resistor/Resistor.jsx";
-import { AVAILABLE_BAND_COLORS_POSITIONS as POSITIONS } from "./BandColors/AvailableBandColorsPositions.js";
+import Resistor from "../Resistor/Resistor.jsx";
+import { AVAILABLE_BAND_COLORS_POSITIONS as POSITIONS } from "../../Utils/BandColors/AvailableBandColorsPositions.js";
 import { NUMEROS_ORDINALES } from "../../data/NumerosOrdinales.js";
 import "./CalculatorBox.css";
-import SelectableColor from "./SelectableColor/SelectableColor.jsx";
+import SelectableColor from "../SelectableColor/SelectableColor.jsx";
 import {
   calculateResistorValues,
   convertToShortScale,

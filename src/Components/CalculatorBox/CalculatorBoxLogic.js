@@ -1,4 +1,4 @@
-import { AVAILABLE_BAND_COLORS_POSITIONS } from "./BandColors/AvailableBandColorsPositions.js";
+import { AVAILABLE_BAND_COLORS_POSITIONS } from "../../Utils/BandColors/AvailableBandColorsPositions";
 
 export const calculateResistorValues = (bands) => {
   const values = {};
