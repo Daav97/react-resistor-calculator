@@ -72,9 +72,15 @@ export const convertToShortScale = (number) => {
   - Con 5 bandas, la 4° podía ser negra pero con 4 no.
   */
 export const validateBandPositions = (bands, newBandsCount) => {
-  return bands.map((band, index) => {
-    return AVAILABLE_BAND_COLORS_POSITIONS[newBandsCount][index].includes(band)
-      ? band
-      : AVAILABLE_BAND_COLORS_POSITIONS[newBandsCount][index][0];
-  });
+  try {
+    return bands.map((band, index) => {
+      return AVAILABLE_BAND_COLORS_POSITIONS[newBandsCount][index].includes(
+        band
+      )
+        ? band
+        : AVAILABLE_BAND_COLORS_POSITIONS[newBandsCount][index][0];
+    });
+  } catch (error) {
+    return bands;
+  }
 };
