@@ -73,13 +73,13 @@ const CalculatorBox = ({ num, onCloseClick }) => {
           X
         </button>
       </div>
-      Cantidad de bandas: {bandColors.length}
+      <p className="margin-bottom">Cantidad de bandas: {bandColors.length}</p>
       <input
         type="range"
         min="3"
         max="6"
         value={bandColors.length}
-        className="slider"
+        className="slider margin-bottom"
         id="myRange"
         onChange={(e) => handleBandCountSlider(e.target.value)}
       />
@@ -91,7 +91,7 @@ const CalculatorBox = ({ num, onCloseClick }) => {
         bandsColors={bandColors.map((bc) => bc.colorHexCode)}
         selectedBand={selectedBand}
       />
-      <p>
+      <p className="margin-bottom margin-top">
         Selecciona{" "}
         {selectedBand != null ? (
           <>el color de la {NUMEROS_ORDINALES[selectedBand]} banda:</>
@@ -99,7 +99,7 @@ const CalculatorBox = ({ num, onCloseClick }) => {
           "alguna banda para elegir su color"
         )}
       </p>
-      <div className="selectableColors">
+      <div className="selectableColors margin-bottom">
         {selectableColors.map((sc, idx) => {
           return (
             <SelectableColor
@@ -111,8 +111,8 @@ const CalculatorBox = ({ num, onCloseClick }) => {
           );
         })}
       </div>
-      <p>Valor de la resistencia:</p>
-      <div className="resultDisplay">
+      <p className="margin-bottom">Valor de la resistencia:</p>
+      <div className="resultDisplay margin-bottom">
         {result?.total && `${convertToShortScale(result.total)}Ω `}
         {result?.tolerance && `±${result.tolerance?.tolerance}% `}
         {result?.temperature && `${result.temperature.temperature} ppm`}
