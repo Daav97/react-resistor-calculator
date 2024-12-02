@@ -9,6 +9,8 @@ import {
   convertToShortScale,
   validateBandPositions,
 } from "./CalculatorBoxLogic.js";
+import InfoIcon from "../InfoIcon/InfoIcon.jsx";
+import Explanation from "../Explanation/Explanation.jsx";
 
 const DEFAULT_BAND_COLORS = [
   POSITIONS[4][0][1],
@@ -92,11 +94,11 @@ const CalculatorBox = ({ num, onCloseClick }) => {
         selectedBand={selectedBand}
       />
       <p className="margin-bottom margin-top">
-        Selecciona{" "}
+        Selecciona
         {selectedBand != null ? (
-          <>el color de la {NUMEROS_ORDINALES[selectedBand]} banda:</>
+          <> el color de la {NUMEROS_ORDINALES[selectedBand]} banda:</>
         ) : (
-          "alguna banda para elegir su color"
+          " alguna banda para elegir su color"
         )}
       </p>
       <div className="selectableColors margin-bottom">
@@ -111,7 +113,21 @@ const CalculatorBox = ({ num, onCloseClick }) => {
           );
         })}
       </div>
-      <p className="margin-bottom">Valor de la resistencia:</p>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "7px",
+        }}
+        className="margin-bottom"
+      >
+        <InfoIcon
+          child={<Explanation bands={bandColors} />}
+          bgColor={"#3d3d3d"}
+          color={"black"}
+        />
+        <p>Valor de la resistencia:</p>
+      </div>
       <div className="resultDisplay margin-bottom">
         {result?.total && `${convertToShortScale(result.total)}Ω `}
         {result?.tolerance && `±${result.tolerance?.tolerance}% `}

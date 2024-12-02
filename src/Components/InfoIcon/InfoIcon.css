@@ -1,0 +1,56 @@
+.info-icon-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+.info-icon {
+  font-family: "Lobster", cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.details-modal-container {
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: white;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  text-align: center;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  opacity: 1;
+  padding: 0;
+  cursor: default;
+}
+
+/* Flecha debajo del tooltip */
+.details-modal-container::after {
+  cursor: default;
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: var(--tooltip-border-color, #333) transparent transparent
+    transparent;
+}

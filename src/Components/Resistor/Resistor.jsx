@@ -1,7 +1,7 @@
 import "./Resistor.css";
 
 const Resistor = ({
-  bandsColors,
+  bandsColors = [],
   // containerWidth = 500,
   drawParams,
   onBandClick,
